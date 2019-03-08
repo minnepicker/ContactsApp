@@ -31,14 +31,18 @@ class ContactTableViewController: UITableViewController {
         return cell
     }
     
-/*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailVC" {
+            if let detailVC = segue.destination as? ContactDetailViewController,
+                let indexPath = self.tableView.indexPathForSelectedRow?.row {
+                let contact = self.contactArray[indexPath]
+                
+                detailVC.contact = contact
+            }
+        }
     }
-    */
-
 }
